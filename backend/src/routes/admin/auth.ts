@@ -1,18 +1,8 @@
 import { Router } from "express";
+import authController from "../../controllers/admin/authController";
 
 const router = Router()
 
-router.post('/login', (req, res) => {
-    const username = req.body.username
-    const password = req.body.password
-
-    res.status(200).json({
-        status: "Success",
-        Credentials: {
-            username: username,
-            password: password
-        }
-    })
-})
+router.post('/login', authController.login)
 
 export default router
