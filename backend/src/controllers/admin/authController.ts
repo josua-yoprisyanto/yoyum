@@ -8,23 +8,26 @@ dotenv.config()
 
 class AuthController{
     async login(req: Request, res: Response, next: NextFunction){
-        try{            
-            let message = "Success"
+        try{                        
             const email = req.body.email
             const password = req.body.password
 
             const user = await db.Admin.findOne({where: {email}})
-            if(!user) message = "Incorrect credentials"
+            if(!user) res.json({
+                status: "failed",
+                message: "Incorrect credentials"
+            })
             bcrypt.compare(password, user.password, (err: any, result: any) => {
                 if(result) {
                     const token = jwt.sign(JSON.stringify(user), process.env.ACCESS_TOKEN)
                     res.json({
-                        status: message,
+                        status: "Success",
                         token: token
                     })        
-                }else{
-                    message = "Incorrect Credentials"
-                    res.json({message: message})
+                }else{                    
+                    res.json({
+                        status: "failed",
+                        message: "incorrect credentials"})
                 }
             })
             

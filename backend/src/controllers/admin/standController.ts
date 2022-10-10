@@ -21,6 +21,22 @@ class StandController{
         }
     }
 
+    async readOne(req: Request, res: Response, next: NextFunction){
+        try{
+            if(res.locals.err) return res.json({message: "Do you just not have the key?"})
+            const seller = await db.seller.findOne({where:{id: req.params.id}})
+            res.json({
+                status: "Success",
+                data: seller
+            })
+        }catch(e: any){
+            res.json({
+                status: "failed",
+                data: e.message
+            })
+        }
+    }
+
 
     async addStand(req: Request, res: Response, next: NextFunction){
         try{
