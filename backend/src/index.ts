@@ -3,11 +3,18 @@ import express from 'express'
 import db from './models/index'
 import router from './routes'
 import { admins } from './seeders/admins'
+const bcrypt = require('bcrypt')
+
+
+
 
 // try{
-//     const createAdmins = () => {
+//     const createAdmins = () => {        
 //         admins.map(admin => {
-//             db.Admin.create(admin).then(() => {console.log("It works")}).catch((e:any) => {console.error(e)})
+//             bcrypt.hash(admin.password, 10, (err: any, hash: any) => {
+//                 admin.password = hash
+//                 db.Admin.create(admin).then(() => {console.log("It works")}).catch((e:any) => {console.error(e)})
+//             })            
 //         })
 //     }
 //     createAdmins()
