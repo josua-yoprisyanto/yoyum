@@ -1,0 +1,49 @@
+.nav-container {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+}
+.action {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 20px;
+}
+.action span {
+  width: 100px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search {
+  width: 50%;
+}
+.action span:hover {
+  font-weight: bold;
+  cursor: pointer;
+  border-bottom: 2px solid black;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search input {
+  outline: none;
+  width: 60%;
+  border: none;
+  height: 55%;
+  padding: 0 0 0 40px;
+  border-radius: 2px;
+}
+.search-button {
+  background-color: white;
+  height: 55%;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+}
