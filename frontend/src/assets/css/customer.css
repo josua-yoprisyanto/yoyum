@@ -1,3 +1,42 @@
 .customer {
   background-color: #d9d9d9;
+  display: flex;
+}
+.sidebar {
+  width: 300px;
+}
+.navigationBar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.content-title-container {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.short-line {
+  height: 3px;
+  margin: 1px;
+  background-color: black;
+  width: 200px;
+}
+.long-line {
+  height: 3px;
+  margin: 2px;
+  background-color: black;
+  width: 300px;
+}
+.content-title {
+  font-size: 30px;
+  font-weight: bold;
 }
