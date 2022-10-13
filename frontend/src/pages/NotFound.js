@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import NotFoundImage from '../assets/images/notFound.svg'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const NotFound = () => {
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        navigate("/404")
+    }, [])
+
     return (
         <div className='d-flex justify-content-center align-items-center flex-column'>
             <img src={NotFoundImage} width="80%" height="400" />
