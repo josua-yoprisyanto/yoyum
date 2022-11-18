@@ -1,8 +1,7 @@
 import React from "react";
 import "../assets/css/sidebar.css";
 import yoyum2 from "../assets/images/yoyum2.png";
-import { stanObject } from "../data/stanObject.ts";
-
+import yoyum1 from "../assets/images/yoyum1.png";
 const SideBar = () => {
   return (
     <div className="sidebar ">
@@ -11,18 +10,14 @@ const SideBar = () => {
       </div>
       <div className="stan-container">
         <div className="stan-wrapper">
-          {stanObject.map((stan) => (
-            <div className="stan active">
-              <img src={stan.image} alt="stan" />
-              <span>{stan.name}</span>
-            </div>
-          ))}
-          {stanObject.map((stan) => (
-            <div className="stan">
-              <img src={stan.image} alt="stan" />
-              <span>{stan.name}</span>
-            </div>
-          ))}
+          <div className="stan active">
+            <img src={yoyum1} alt="stan" />
+            <span>Menu</span>
+          </div>
+          <div className="stan">
+            <img src={yoyum1} alt="stan" />
+            <span>Profil</span>
+          </div>
         </div>
       </div>
       <div className="sidebar-shadow-left"></div>
