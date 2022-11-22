@@ -10,7 +10,7 @@ const Customer = () => {
         <SellerSideBar />
       </div>
       <div className="navigationBar">
-        <div className="title">
+        <div className="seller-title">
           <h1>SELLER</h1>
         </div>
         <SellerContent />
