@@ -37,6 +37,7 @@
 }
 .stan {
   height: 3rem;
+  width: calc(250px - 3rem);
   font-size: 1.25rem;
   border-radius: 1rem;
   margin: 0 1.5rem;
@@ -46,7 +47,7 @@
   cursor: pointer;
 }
 .stan > img {
-  height: 1.5rem;
+  height: 2.3rem;
   border: 2px solid #1f3159;
   border-radius: 1rem;
 }

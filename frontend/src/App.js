@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Customer, NotFound, SignIn, SignUp, Seller, Admin } from "./pages";
+import { Customer, NotFound, SignIn, SignUp, Seller, SellerProfil, Admin } from "./pages";
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/seller" element={<Seller />} />
+        <Route path="/seller/profil" element={<SellerProfil />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
     </Router>
