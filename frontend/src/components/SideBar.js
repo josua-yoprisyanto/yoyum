@@ -17,12 +17,6 @@ const SideBar = () => {
               <span>{stan.name}</span>
             </div>
           ))}
-          {stanObject.map((stan) => (
-            <div className="stan">
-              <img src={stan.image} alt="stan" />
-              <span>{stan.name}</span>
-            </div>
-          ))}
         </div>
       </div>
       <div className="sidebar-shadow-left"></div>
