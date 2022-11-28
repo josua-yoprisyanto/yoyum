@@ -1,7 +1,8 @@
 import React from "react";
 import "../assets/css/sidebar.css";
 import yoyum2 from "../assets/images/yoyum2.png";
-import yoyum1 from "../assets/images/yoyum1.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAddressCard, faClipboard } from "@fortawesome/free-solid-svg-icons";
 const SideBar = () => {
   return (
     <div className="sidebar ">
@@ -11,11 +12,11 @@ const SideBar = () => {
       <div className="stan-container">
         <div className="stan-wrapper">
           <div className="stan active">
-            <img src={yoyum1} alt="stan" />
+            <FontAwesomeIcon icon={faClipboard} />
             <span>Menu</span>
           </div>
           <div className="stan">
-            <img src={yoyum1} alt="stan" />
+            <FontAwesomeIcon icon={faAddressCard} />
             <span>Profil</span>
           </div>
         </div>

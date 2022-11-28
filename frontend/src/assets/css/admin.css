@@ -7,15 +7,22 @@
   padding-inline: 1.5rem;
   display: flex;
   justify-content: space-between;
+  z-index: 999;
 }
-.admin-yoyum-logo-2 {
+.admin-yoyum-logo {
   height: 4rem;
+  width: 60px;
   display: flex;
   align-items: center;
   background-color: transparent;
+  background-color: aqua;
 }
-.admin-yoyum-logo-2 img {
+.admin-yoyum-logo img:first-child {
   height: 10rem;
+}
+.admin-yoyum-logo img:last-child {
+  height: 2.3rem;
+  display: none;
 }
 .admin-title {
   height: 4rem;
@@ -24,10 +31,14 @@
 }
 .admin-title h1 {
   color: #1f3159;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 .profil-drop-down {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  width: 60px;
 }
 .profil-icon {
   width: 2.3rem;
@@ -35,6 +46,12 @@
   border-radius: 50%;
   background-color: #1f3159;
   margin-right: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profil-icon > svg > path {
+  color: white;
 }
 .triangle {
   border-color: #1f3159 transparent transparent transparent;
@@ -43,14 +60,22 @@
   translate: 0 25%;
 }
 .admin-content {
-  margin-top: 4rem;
+  margin-top: 5rem;
+  padding: 1rem;
   width: 100%;
   display: flex;
   justify-content: center;
-}
-.stan-container {
-  width: fit-content;
-  display: flex;
-  flex-flow: column;
+  flex-wrap: wrap;
   gap: 1rem;
+}
+@media only screen and (max-width: 600px) {
+  .admin-yoyum-logo img:first-child {
+    display: none;
+  }
+  .admin-yoyum-logo img:last-child {
+    display: block;
+  }
+  .admin-content {
+    padding: 0.5rem;
+  }
 }

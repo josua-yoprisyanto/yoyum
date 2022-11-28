@@ -2,6 +2,8 @@ import React from "react";
 import "../assets/css/sidebar.css";
 import yoyum2 from "../assets/images/yoyum2.png";
 import { stanObject } from "../data/stanObject.ts";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStore } from "@fortawesome/free-solid-svg-icons";
 
 const SideBar = () => {
   return (
@@ -13,13 +15,13 @@ const SideBar = () => {
         <div className="stan-wrapper">
           {stanObject.map((stan) => (
             <div className="stan active">
-              <img src={stan.image} alt="stan" />
+              {stan.image ? <img src={stan.image} alt="stan" /> : <FontAwesomeIcon icon={faStore} />}
               <span>{stan.name}</span>
             </div>
           ))}
           {stanObject.map((stan) => (
             <div className="stan">
-              <img src={stan.image} alt="stan" />
+              <FontAwesomeIcon icon={faStore} />
               <span>{stan.name}</span>
             </div>
           ))}

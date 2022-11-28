@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "../assets/css/navbar.css";
 import yoyum1 from "../assets/images/yoyum1.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 const Navbar = ({ scrollCondition }) => {
   const [openSearch, setOpenSearch] = useState(false);
   return (
@@ -26,7 +28,7 @@ const Navbar = ({ scrollCondition }) => {
         </div>
         <input type="text" placeHolder="Foods, Drinks, Others" />
         <span className="search-button">
-          <img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png" alt="search button" />
+          <FontAwesomeIcon icon={faSearch} />
           <span className="open-search-button" onClick={() => setOpenSearch(true)}></span>
         </span>
       </div>

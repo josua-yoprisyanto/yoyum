@@ -87,12 +87,11 @@
 .others-total {
   grid-area: other;
 }
-.foods-total img,
-.drinks-total img,
-.others-total img,
-.total-menu img {
-  width: 2.3rem;
-  height: 2.3rem;
+.foods-total > svg > path,
+.drinks-total > svg > path,
+.others-total > svg > path,
+.total-menu > svg > path {
+  color: #1f3159;
 }
 .foods-total h4,
 .drinks-total h4,
@@ -130,9 +129,8 @@
   justify-content: center;
   align-items: center;
 }
-.change-image img {
-  height: 2.3rem;
-  width: 2.3rem;
+.change-image > svg > path {
+  color: white;
 }
 .profil-account > table {
   width: 100%;
@@ -141,11 +139,6 @@
   font-size: 1rem;
   padding-left: 1;
   padding-inline: 0.5rem;
-}
-.profil-account > table > tr > td > img {
-  width: 2.3rem;
-  height: 2.3rem;
-  float: right;
 }
 .profil-account > table > tr > td:nth-child(1) {
   color: #1f3159;

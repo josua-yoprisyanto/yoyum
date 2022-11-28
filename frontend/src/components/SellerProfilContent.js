@@ -1,7 +1,8 @@
 import React from "react";
 import "../assets/css/sellerProfilContent.css";
 import { stanObject } from "../data/stanObject.ts";
-import icon from "../assets/images/yoyum1.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBowlFood, faCamera, faCookie, faMugHot, faUtensils } from "@fortawesome/free-solid-svg-icons";
 const SellerProfilContent = () => {
   return (
     <div className="seller-profil-content">
@@ -14,19 +15,19 @@ const SellerProfilContent = () => {
       <div className="profil-menu-info">
         <h2>MENU INFO</h2>
         <div className="total-menu">
-          <img src={icon} alt="icon" />
+          <FontAwesomeIcon icon={faUtensils} size="xl" />
           <h4>Total Menu : 44</h4>
         </div>
         <div className="foods-total">
-          <img src={icon} alt="icon" />
+          <FontAwesomeIcon icon={faBowlFood} size="xl" />
           <h4>23</h4>
         </div>
         <div className="drinks-total">
-          <img src={icon} alt="icon" />
+          <FontAwesomeIcon icon={faMugHot} size="xl" />
           <h4>12</h4>
         </div>
         <div className="others-total">
-          <img src={icon} alt="icon" />
+          <FontAwesomeIcon icon={faCookie} size="xl" />
           <h4>99</h4>
         </div>
       </div>
@@ -36,7 +37,7 @@ const SellerProfilContent = () => {
         <div className="stan-image">
           <img src={stanObject[1].image} alt="stan" />
           <span className="change-image">
-            <img src={icon} alt="icon" />
+            <FontAwesomeIcon icon={faCamera} size="xl" />
           </span>
         </div>
 
@@ -45,15 +46,11 @@ const SellerProfilContent = () => {
             <td>Stan Name</td>
             <td>:</td>
             <td>stan 2</td>
-            <td>
-              <img src={icon} alt="icon" />
-            </td>
           </tr>
           <tr>
-            <td>email</td>
+            <td>Phone Number</td>
             <td>:</td>
-            <td>stanDavin@gmail.com</td>
-            <td></td>
+            <td>+62 812 2323 5435</td>
           </tr>
         </table>
       </div>

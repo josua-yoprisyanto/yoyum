@@ -100,6 +100,13 @@ a.active {
   position: relative;
   cursor: pointer;
 }
+.search-button > svg > path {
+  color: white;
+  transition: 0.3s;
+}
+.search.open > .search-button > svg > path {
+  color: #1f3159 !important;
+}
 .open-search-button {
   width: 100%;
   height: 100%;
@@ -176,6 +183,9 @@ a.active {
   .search .search-button {
     border-radius: 0;
     background-color: white;
+  }
+  .search-button > svg > path {
+    color: #1f3159;
   }
   .action {
     width: 300px;
