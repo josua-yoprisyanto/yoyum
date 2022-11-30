@@ -9,7 +9,12 @@ html {
   scroll-padding-top: 4.2rem;
 }
 body {
-  background-color: #d9d9d9;
+  background: url("assets/images/background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  background-attachment: fixed;
 }
 ::-webkit-scrollbar {
   width: 0.5rem;

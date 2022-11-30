@@ -19,12 +19,6 @@ const SideBar = () => {
               <span>{stan.name}</span>
             </div>
           ))}
-          {stanObject.map((stan) => (
-            <div className="stan">
-              <FontAwesomeIcon icon={faStore} />
-              <span>{stan.name}</span>
-            </div>
-          ))}
         </div>
       </div>
       <div className="sidebar-shadow-left"></div>

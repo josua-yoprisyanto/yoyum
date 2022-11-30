@@ -14,14 +14,11 @@ function CustomerContent() {
           <span className="short-line" />
         </div>
         <div className="content-food-container">
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
+          <FoodCard
+            foodName="nasi kari"
+            foodPrice={99000}
+            foodImage="https://awsimages.detik.net.id/community/media/visual/2019/04/24/de2758a6-ea38-4ae9-8c4b-f2b395a81a22_43.png?w=700&q=90"
+          />
         </div>
       </div>
 
@@ -34,14 +31,11 @@ function CustomerContent() {
           <span className="short-line" />
         </div>
         <div className="content-food-container">
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
+          <FoodCard
+            foodName="nasi kari"
+            foodPrice={99000}
+            foodImage="https://awsimages.detik.net.id/community/media/visual/2019/04/24/de2758a6-ea38-4ae9-8c4b-f2b395a81a22_43.png?w=700&q=90"
+          />
         </div>
       </div>
 
@@ -54,14 +48,11 @@ function CustomerContent() {
           <span className="short-line" />
         </div>
         <div className="content-food-container">
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
-          <FoodCard />
+          <FoodCard
+            foodName="nasi kari"
+            foodPrice={99000}
+            foodImage="https://awsimages.detik.net.id/community/media/visual/2019/04/24/de2758a6-ea38-4ae9-8c4b-f2b395a81a22_43.png?w=700&q=90"
+          />
         </div>
       </div>
     </div>
