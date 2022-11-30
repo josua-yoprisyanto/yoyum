@@ -1,0 +1,86 @@
+.stan-card {
+  width: 300px;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.stan-img {
+  width: 100%;
+  height: 150px;
+  background-color: aqua;
+}
+.stan-info {
+  width: 100%;
+  background-color: white;
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: auto 3rem 3rem;
+  grid-template-areas:
+    "name toggle delete"
+    "telp toggle delete";
+}
+.stan-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  grid-area: name;
+}
+.stan-telp {
+  grid-area: telp;
+}
+.stan-toggle {
+  grid-area: toggle;
+  align-self: center;
+  justify-self: center;
+}
+.toggle input {
+  display: none;
+}
+.toggle {
+  cursor: pointer;
+  height: 20px;
+  width: 40px;
+  position: relative;
+  translate: 0 4px;
+}
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0px 0px 0px 1px #888, 0px 0px 2px #888;
+  transition: 0.2s;
+  background-color: #888;
+}
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  border-radius: 20px;
+  translate: -20px;
+  transition: 0.3s;
+}
+.toggle input:checked + .slider::before {
+  translate: 20px;
+  background-color: white;
+}
+.toggle input:checked + .slider {
+  box-shadow: 0px 0px 0px 1px #1f3159, 0px 0px 2px #1f3159;
+  background-color: #1f3159;
+}
+.stan-delete {
+  grid-area: delete;
+  justify-self: center;
+  align-self: center;
+}
+.trash-icon path {
+  color: #888;
+  cursor: pointer;
+}
+.trash-icon path:hover {
+  color: #1f3159;
+}

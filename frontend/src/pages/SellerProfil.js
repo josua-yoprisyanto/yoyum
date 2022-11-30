@@ -2,7 +2,7 @@ import React from "react";
 import "../assets/css/seller.css";
 import "../assets/css/customer.css";
 import SellerSideBar from "../components/SellerSideBar";
-import SellerContent from "../components/SellerContent";
+import SellerProfilContent from "../components/SellerProfilContent";
 const Customer = () => {
   return (
     <div className="customer">
@@ -13,7 +13,7 @@ const Customer = () => {
         <div className="seller-title">
           <h1>SELLER</h1>
         </div>
-        <SellerContent />
+        <SellerProfilContent />
       </div>
     </div>
   );

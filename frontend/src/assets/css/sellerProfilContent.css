@@ -1,0 +1,146 @@
+.seller-profil-content {
+  width: 100%;
+  padding-top: 5rem;
+  padding-inline: 1.5rem;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  grid-template-columns: 300px 600px;
+  grid-template-rows: 100px auto;
+  grid-template-areas:
+    "stan account"
+    "menu account";
+}
+.profil-stan-container,
+.profil-account,
+.profil-menu-info {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.profil-stan-container {
+  height: 100px;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: stan;
+}
+.stan-seller-profil {
+  width: calc(250px - 3rem);
+}
+.profil-account {
+  height: 100%;
+  grid-area: account;
+}
+.profil-menu-info {
+  grid-area: menu;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    " title title title"
+    "total total total"
+    "food drink other";
+  row-gap: 1rem;
+  justify-items: center;
+}
+.total-menu {
+  width: 100%;
+  height: 70px;
+  border-radius: 1rem;
+  background-color: #e8e9ff;
+  grid-area: total;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.profil-account h2,
+.profil-menu-info h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  color: #1f3159;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.profil-menu-info h2 {
+  grid-area: title;
+}
+.foods-total,
+.drinks-total,
+.others-total {
+  height: 100px;
+  width: 80px;
+  background-color: #e8e9ff;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.foods-total {
+  grid-area: food;
+}
+.drinks-total {
+  grid-area: drink;
+}
+.others-total {
+  grid-area: other;
+}
+.foods-total > svg > path,
+.drinks-total > svg > path,
+.others-total > svg > path,
+.total-menu > svg > path {
+  color: #1f3159;
+}
+.foods-total h4,
+.drinks-total h4,
+.others-total h4,
+.total-menu h4 {
+  font-size: 1.25rem;
+  color: #1f3159;
+  font-weight: bold;
+}
+.profil-account {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.stan-image {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  border: 5px solid #1f3159;
+  overflow: hidden;
+  position: relative;
+}
+.stan-image img {
+  width: 100%;
+}
+.change-image {
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.change-image > svg > path {
+  color: white;
+}
+.profil-account > table {
+  width: 100%;
+}
+.profil-account > table > tr > td {
+  font-size: 1rem;
+  padding-left: 1;
+  padding-inline: 0.5rem;
+}
+.profil-account > table > tr > td:nth-child(1) {
+  color: #1f3159;
+  font-weight: bold;
+}

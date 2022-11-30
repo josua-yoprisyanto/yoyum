@@ -2,7 +2,7 @@ import React from "react";
 import FoodCard from "./FoodCard";
 import "../assets/css/menuContent.css";
 
-function CustomerContent({ setScrollCondition }) {
+function CustomerContent() {
   return (
     <div className="content">
       <div>

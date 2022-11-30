@@ -1,4 +1,4 @@
-.title {
+.seller-title {
   background-color: #d9d9d9;
   height: 4rem;
   box-shadow: 0 4px 4px #d9d9d9;
@@ -11,6 +11,8 @@
   right: 0;
   z-index: 999;
 }
-.title h1 {
+.seller-title h1 {
   color: #1f3159;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
