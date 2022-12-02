@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../assets/css/sellerProfilContent.css";
 import { stanObject } from "../data/stanObject.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBowlFood, faCamera, faCookie, faMugHot, faUtensils } from "@fortawesome/free-solid-svg-icons";
 const SellerProfilContent = () => {
+  const [isEdit, setIsEdit] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState();
+  const [stanName, setStanName] = useState();
+  const stanNameRef = useRef();
+  const editFormHandle = (e) => {
+    e.preventDefault();
+    setIsEdit(true);
+  };
+  const submitFormHandle = (e) => {
+    e.preventDefault();
+    setIsEdit(false);
+  };
+  useEffect(() => {
+    stanNameRef.current.focus();
+  }, [isEdit]);
   return (
     <div className="seller-profil-content">
       <div className="profil-stan-container">
@@ -40,19 +55,44 @@ const SellerProfilContent = () => {
             <FontAwesomeIcon icon={faCamera} size="xl" />
           </span>
         </div>
-
-        <table>
-          <tr>
-            <td>Stan Name</td>
-            <td>:</td>
-            <td>stan 2</td>
-          </tr>
-          <tr>
-            <td>Phone Number</td>
-            <td>:</td>
-            <td>+62 812 2323 5435</td>
-          </tr>
-        </table>
+        <form className="account-info" onSubmit={(e) => submitFormHandle(e)}>
+          <table>
+            <tr>
+              <td>Stan Name</td>
+              <td>:</td>
+              <td>
+                <input
+                  type="text"
+                  value={stanName}
+                  onChange={(e) => setStanName(e.target.value)}
+                  disabled={!isEdit}
+                  ref={stanNameRef}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Phone Number</td>
+              <td>:</td>
+              <td>
+                <input
+                  type="text"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  disabled={!isEdit}
+                />
+              </td>
+            </tr>
+          </table>
+          <div className="account-info-button">
+            {isEdit ? (
+              <input type="submit" className="account-info-edit-button" value="submit" />
+            ) : (
+              <button onClick={(e) => editFormHandle(e)} className="account-info-edit-button">
+                edit
+              </button>
+            )}
+          </div>
+        </form>
       </div>
     </div>
   );
