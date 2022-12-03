@@ -1,0 +1,165 @@
+.edit-food-modal-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #1f31596b;
+  z-index: 999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.edit-food-modal-wrapper {
+  background-color: white;
+  width: 800px;
+  height: 300px;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+.edit-food-modal-food-card {
+  height: 100%;
+  width: 350px;
+  background-image: url(../images/background.png);
+  border-radius: 1rem;
+  box-shadow: inset 0 0 4px 4px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.edit-food-modal {
+  width: calc(100% - 350px - 1rem);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.edit-food-modal-title {
+  color: #1f3159;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-bottom: 3px solid #1f3159;
+  height: 2.5rem;
+}
+.edit-food-modal-input > table {
+  width: 100%;
+}
+.edit-food-modal-input > table > tr {
+  display: flex;
+  justify-content: space-between;
+  margin-block: 0.5rem;
+}
+.edit-food-modal-input > table > tr > td {
+  font-size: 1rem;
+}
+.edit-food-modal-input > table > tr > td:nth-child(1),
+.edit-food-modal-input > table > tr > td:nth-child(3) {
+  width: 45%;
+}
+.edit-food-modal-input > table > tr > td > label {
+  color: #1f3159;
+  font-weight: bold;
+}
+
+.edit-food-modal-input > table > tr > td:nth-child(3) > input {
+  width: 100%;
+  border: 1px solid #888;
+  padding-inline: 0.5rem;
+}
+.edit-food-modal-input > table > tr > td:nth-child(3) > input:focus {
+  width: 100%;
+  outline: 1px solid #1f3159;
+}
+.edit-food-modal-input > table > tr > td:nth-child(3) > input:disabled {
+  background-color: transparent;
+  border: 1px solid white;
+  outline: none;
+}
+.edit-food-modal-button-1 {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.edit-food-modal-image-input,
+.edit-food-modal-delete-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  height: 3rem;
+  border-radius: 1rem;
+  margin: 0.5rem 0;
+  position: relative;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5);
+}
+.edit-food-modal-image-input:hover {
+  background-color: #2d4780;
+}
+.edit-food-modal-delete-button:hover {
+  background-color: #b3182a;
+}
+.edit-food-modal-image-input:active,
+.edit-food-modal-delete-button:active {
+  top: 2px;
+}
+.edit-food-modal-image-input {
+  background-color: #1f3159;
+  width: 200px;
+}
+.edit-food-modal-delete-button {
+  background-color: #940019;
+  width: 3rem;
+  border: none;
+  outline: none;
+}
+.edit-food-modal-image-input span {
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.edit-food-modal-image-input > svg > path,
+.edit-food-modal-delete-button > svg > path {
+  color: white;
+}
+.edit-food-modal-image-input input {
+  display: none;
+}
+.edit-food-modal-button-2 {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+.edit-food-modal-submit-button {
+  background-color: #1f3159;
+}
+.edit-food-modal-cancel-button {
+  background-color: #555;
+}
+.edit-food-modal-submit-button,
+.edit-food-modal-cancel-button {
+  min-width: 130px;
+  height: 40px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5);
+}
+.edit-food-modal-submit-button:hover {
+  background-color: #2d4780;
+}
+.edit-food-modal-cancel-button:hover {
+  background-color: #888;
+}
+.edit-food-modal-submit-button:active,
+.edit-food-modal-cancel-button:active {
+  top: 2px;
+}

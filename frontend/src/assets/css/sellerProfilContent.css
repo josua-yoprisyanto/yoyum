@@ -152,8 +152,6 @@
   font-weight: bold;
   width: 45%;
 }
-.account-info > table > tr > td:nth-child(2) {
-}
 .account-info > table > tr > td:nth-child(3) {
   width: 45%;
 }
