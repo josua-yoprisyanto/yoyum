@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import FoodCard from "./FoodCard";
 import "../assets/css/menuContent.css";
 import EditFoodModal from "../modal/EditFoodModal";
 
-function CustomerContent() {
+const CustomerContent = () => {
+  const [isModalOpen, setIsModalOpen] = useState(true);
   return (
     <>
-      <EditFoodModal openModal={true} />
+      <EditFoodModal openModal={isModalOpen} setIsModalOpen={setIsModalOpen} />
       <div className="content">
         <div>
           <div className="content-title-container">
@@ -61,6 +62,6 @@ function CustomerContent() {
       </div>
     </>
   );
-}
+};
 
 export default CustomerContent;
