@@ -8,8 +8,6 @@ interface sellerAttributes{
   email: string,
   password: string,
   active: boolean,
-  createdAt: Date,
-  updatedAt: Date
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -25,15 +23,11 @@ module.exports = (sequelize: any, DataTypes: any) => {
     email!: string
     password!: string
     active!: boolean
-    createdAt!: Date
-    updatedAt!: Date
 
 
     static associate(models: any) {
-      // define association here
-      Seller.hasMany(models.foodItems, {as: 'food_items'})
-      Seller.hasMany(models.drinkItems, {as: 'drink_items'})
-      Seller.hasMany(models.otherItems, {as: 'other_items'})
+      // define association here      
+      Seller.hasMany(models.MenuItem, {as: 'menu_items'})
     }
   }
   Seller.init({
@@ -63,17 +57,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     },
-    createdAt: {
-      allowNull: false,
-      type: DataTypes.DATE
-    },
-    updatedAt: {
-      allowNull: false,
-      type: DataTypes.DATE
-    }
   }, {
     sequelize,
-    modelName: 'seller',
+    modelName: 'Seller',
+    tableName: 'sellers'
   });
   return Seller;
 };

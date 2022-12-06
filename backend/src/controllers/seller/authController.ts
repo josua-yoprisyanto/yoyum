@@ -9,7 +9,7 @@ dotenv.config()
 class authController{
     async login(req: Request, res: Response, next: NextFunction){
         try{
-            const seller = await db.seller.findOne({where: {email: req.body.email}})
+            const seller = await db.Seller.findOne({where: {email: req.body.email}})
             if(!seller) return res.json({
                 status: "failed",
                 message: "Incorrect credentials"
@@ -40,21 +40,14 @@ class authController{
         try{
             console.log("Hit")
             if (res.locals.err) return res.json({message: "It's almost midnight, I am running out of ideas for the no key thing"})
-            const data = await db.seller.findAll({
+            const data = await db.Seller.findAll({
                 where: {id: res.locals.user.id},
                 include: [
                     {
-                        model: db.foodItems,
-                        as: 'food_items'
+                        model: db.MenuItem,
+                        as: 'menu_items'
                     },
-                    {
-                        model: db.drinkItems,
-                        as: 'drink_items'
-                    },
-                    {
-                        model: db.otherItems,
-                        as: 'other_items'
-                    }
+                    
                 ]
             }) 
             if(!data) return res.json({message: 'something went horribly wrong'})

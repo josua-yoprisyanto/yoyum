@@ -8,7 +8,7 @@ class StandController{
     async read(req: Request, res: Response, next: NextFunction){
         try{
             if(res.locals.err) return res.json({message: 'why u no give key man'})
-            const sellers = await db.seller.findAll()
+            const sellers = await db.Seller.findAll()
             res.json({
                 status: "Success",
                 data: sellers
@@ -24,7 +24,7 @@ class StandController{
     async readOne(req: Request, res: Response, next: NextFunction){
         try{
             if(res.locals.err) return res.json({message: "Do you just not have the key?"})
-            const seller = await db.seller.findOne({where:{id: req.params.id}})
+            const seller = await db.Seller.findOne({where:{id: req.params.id}})
             res.json({
                 status: "Success",
                 data: seller
@@ -44,7 +44,7 @@ class StandController{
             let user = req.body
             bcrypt.hash(user.password, 10, (err: any, hash: any) => {
                 user.password = hash
-                db.seller.create(user).then(() => {
+                db.Seller.create(user).then(() => {
                     res.json({
                         status: "Success",
                         data: user
@@ -66,7 +66,7 @@ class StandController{
             if(res.locals.err) return res.json({message: 'I do not see token, WHO IS U' })
             if(!req.params.id) return res.json({message: "At least tell me which stand you want to cahnge the status man"})                        
             if(!req.body) return res.json({message: "FOR FUCKS SAKE JUST GIVE ME A TRUE OR FALSE"})
-            const stand = await db.seller.findOne({where: {id: req.params.id}})
+            const stand = await db.Seller.findOne({where: {id: req.params.id}})
             stand.set({active: req.body.status})
             await stand.save()
             res.json({

@@ -1,17 +1,17 @@
 'use strict';
 import { Model } from 'sequelize';
 
-interface foodAttributes{
-  id: number,  
-  name: string,
-  img: string,
-  price: number,
-  createdAt: Date,
-  updatedAt: Date
+interface menuItemAttributes{
+  id: number;  
+  name: string;
+  seller_id: any;
+  img: string;
+  price: number;
+  type: any;
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
-  class foodItems extends Model<foodAttributes> implements foodAttributes {
+  class MenuItem extends Model<menuItemAttributes> implements menuItemAttributes {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -19,19 +19,19 @@ module.exports = (sequelize: any, DataTypes: any) => {
      */
     id!: number    
     name!: string
+    seller_id!: any
     img!: string
     price!: number
-    createdAt!: Date
-    updatedAt!: Date
+    type!: any  
     static associate(models: any) {
       // define association here
-      foodItems.belongsTo(models.seller, {
-        as: 'food_items',
-        foreignKey: {name: 'sellerId'}
+      MenuItem.belongsTo(models.Seller, {
+        as: 'menu_items',
+        foreignKey: 'seller_id'
       })
     }
   }
-  foodItems.init({
+  MenuItem.init({
     id:{
       allowNull: false,
       autoIncrement: true,
@@ -42,6 +42,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
       allowNull: false,
       type: DataTypes.STRING
     },
+    seller_id:{
+        allowNull: false,
+        type: DataTypes.INTEGER
+    },
     img:{      
       type: DataTypes.STRING
     },
@@ -49,17 +53,14 @@ module.exports = (sequelize: any, DataTypes: any) => {
       allowNull: false,
       type: DataTypes.INTEGER
     },
-    createdAt: {
-      allowNull: false,
-      type: DataTypes.DATE
-    },
-    updatedAt: {
-      allowNull: false,
-      type: DataTypes.DATE
+    type:{
+        allowNull: false,
+        type: DataTypes.ENUM('food', 'drink', 'other')
     }
   }, {
     sequelize,
-    modelName: 'foodItems',
+    modelName: 'MenuItem',
+    tableName: 'menu_items'
   });
-  return foodItems;
+  return MenuItem;
 };

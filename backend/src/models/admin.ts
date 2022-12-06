@@ -5,8 +5,6 @@ interface adminAttributes{
   id: number,
   email: string,
   password: string,
-  createdAt: Date,
-  updatedAt: Date
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -19,8 +17,6 @@ module.exports = (sequelize: any, DataTypes: any) => {
     id!: number
     email!: string
     password!: string
-    createdAt!: Date
-    updatedAt!: Date
     static associate(models: any) {
       // define association here
     }
@@ -39,14 +35,6 @@ module.exports = (sequelize: any, DataTypes: any) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    createdAt: {
-      allowNull: false,
-      type: DataTypes.DATE
-    },
-    updatedAt: {
-      allowNull: false,
-      type: DataTypes.DATE
-    }
   }, {
     sequelize,
     modelName: 'Admin',

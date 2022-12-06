@@ -6,7 +6,14 @@ export default{
     "database": process.env.DB_NAME,
     "host": process.env.DB_HOST,
     "port": process.env.DB_PORT,
-    "dialect": "mysql"
+    "dialect": "mysql",
+    define: {
+      underscored: true,
+      underscoredAll: true,
+      createdAt: 'created_at',
+      updatedAt: 'updated_at',
+      timestamps: false      
+    },
   },
   "test": {
     "username": "root",
