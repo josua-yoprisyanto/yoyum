@@ -1,8 +1,11 @@
 .content {
   width: 100%;
+  height: calc(100vh - 4rem);
   padding-top: 5rem;
   display: flex;
   flex-direction: column;
+  overflow: auto;
+  margin-top: 4rem;
 }
 .content-title-container {
   display: flex;

@@ -1,16 +1,16 @@
 .seller-profil-content {
   width: 100%;
-  padding-top: 5rem;
   padding-inline: 1.5rem;
   display: grid;
   justify-content: center;
-  align-items: center;
   gap: 1rem;
   grid-template-columns: 300px 600px;
   grid-template-rows: 100px auto;
   grid-template-areas:
     "stan account"
     "menu account";
+  margin-top: 4rem;
+  overflow: auto;
 }
 .profil-stan-container,
 .profil-account,
