@@ -22,10 +22,12 @@
   margin-bottom: 2rem;
 }
 .text-blue {
+  font-weight: bold;
   color: #1f3159;
 }
 .text-yellow {
   color: #f7a307;
+  font-weight: bold;
 }
 .sign-in-form {
   display: flex;
@@ -47,6 +49,7 @@
   border: 2px solid #ccc;
   padding-left: 20px;
   transition: all ease 0.5s;
+  margin-bottom: 1rem;
 }
 .email-input:focus,
 .password-input:focus {
@@ -55,6 +58,7 @@
 .submit-button {
   height: 3rem;
   width: 100%;
+  font-weight: bold;
   background-color: #1f3159;
   margin-top: 1rem;
   color: white;
