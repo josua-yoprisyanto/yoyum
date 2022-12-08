@@ -5,12 +5,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBowlFood, faCamera, faCookie, faMugHot, faPen, faUtensils } from "@fortawesome/free-solid-svg-icons";
 const SellerProfilContent = () => {
   const [isEdit, setIsEdit] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState();
-  const [stanName, setStanName] = useState();
+  const [phoneNumber, setPhoneNumber] = useState("2312312");
+  const [stanName, setStanName] = useState("kantin davin");
+  const [history, setHistory] = useState({});
   const stanNameRef = useRef();
   const editFormHandle = (e) => {
     e.preventDefault();
     setIsEdit(true);
+    setHistory({ phoneNumber: phoneNumber, stanName: stanName });
+  };
+  const cancelFormHandle = (e) => {
+    e.preventDefault();
+    setIsEdit(false);
+    setStanName(history.stanName);
+    setPhoneNumber(history.phoneNumber);
   };
   const submitFormHandle = (e) => {
     e.preventDefault();
@@ -86,12 +94,19 @@ const SellerProfilContent = () => {
           </table>
           <div className="account-info-button">
             {isEdit ? (
-              <input type="submit" className="account-info-submit-button" value="submit" />
+              <>
+                <button onClick={(e) => cancelFormHandle(e)} className="account-info-cancel-button">
+                  cancel
+                </button>
+                <input type="submit" className="account-info-submit-button" value="submit" />
+              </>
             ) : (
-              <button onClick={(e) => editFormHandle(e)} className="account-info-edit-button">
-                <span>edit</span>
-                <FontAwesomeIcon icon={faPen} size="sm" />
-              </button>
+              <>
+                <button onClick={(e) => editFormHandle(e)} className="account-info-edit-button">
+                  <span>edit</span>
+                  <FontAwesomeIcon icon={faPen} size="sm" />
+                </button>
+              </>
             )}
           </div>
         </form>

@@ -194,6 +194,14 @@
   color: #1f3159;
 }
 .account-info-submit-button {
+  background-color: #1f3159;
+}
+.account-info-cancel-button {
+  background-color: #666;
+  margin-right: 1rem;
+}
+.account-info-submit-button,
+.account-info-cancel-button {
   min-width: 130px;
   height: 40px;
   color: #fff;
@@ -207,11 +215,14 @@
   border-radius: 5px;
   border: none;
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5);
-  background: #1f3159;
 }
 .account-info-submit-button:hover {
   background-color: #2d4780;
 }
-.account-info-submit-button:active {
+.account-info-cancel-button:hover {
+  background-color: #888;
+}
+.account-info-submit-button:active,
+.account-info-cancel-button:active {
   top: 2px;
 }
