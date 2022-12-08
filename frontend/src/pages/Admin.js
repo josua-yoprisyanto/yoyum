@@ -25,9 +25,8 @@ const Admin = () => {
       </div>
       <div className="admin-content">
         <StanCard /> <StanCard /> <StanCard /> <StanCard /> <StanCard /> <StanCard />
-        <StanCard /> <StanCard />
-        <StanCard /> <StanCard />
-        <StanCard /> <StanCard />
+        <StanCard />
+        <div className="add-stan-button"></div>
       </div>
     </div>
   );
