@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "../assets/css/sellerProfilContent.css";
 import { stanObject } from "../data/stanObject.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBowlFood, faCamera, faCookie, faMugHot, faUtensils } from "@fortawesome/free-solid-svg-icons";
+import { faBowlFood, faCamera, faCookie, faMugHot, faPen, faUtensils } from "@fortawesome/free-solid-svg-icons";
 const SellerProfilContent = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState();
@@ -51,9 +51,10 @@ const SellerProfilContent = () => {
         <h2>ACCOUNT</h2>
         <div className="stan-image">
           <img src={stanObject[1].image} alt="stan" />
-          <span className="change-image">
+          <label className="change-image">
             <FontAwesomeIcon icon={faCamera} size="xl" />
-          </span>
+            <input type="file" name="myImage" accept="image/png,  image/jpeg" />
+          </label>
         </div>
         <form className="account-info" onSubmit={(e) => submitFormHandle(e)}>
           <table>
@@ -85,10 +86,11 @@ const SellerProfilContent = () => {
           </table>
           <div className="account-info-button">
             {isEdit ? (
-              <input type="submit" className="account-info-edit-button" value="submit" />
+              <input type="submit" className="account-info-submit-button" value="submit" />
             ) : (
               <button onClick={(e) => editFormHandle(e)} className="account-info-edit-button">
-                edit
+                <span>edit</span>
+                <FontAwesomeIcon icon={faPen} size="sm" />
               </button>
             )}
           </div>

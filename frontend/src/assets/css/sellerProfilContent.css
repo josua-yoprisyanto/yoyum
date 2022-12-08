@@ -128,6 +128,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+.change-image > input {
+  display: none;
 }
 .change-image > svg > path {
   color: white;
@@ -177,6 +181,21 @@
 .account-info-edit-button {
   min-width: 130px;
   height: 40px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.account-info-edit-button > span {
+  color: #1f3159;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+.account-info-edit-button > svg > path {
+  color: #1f3159;
+}
+.account-info-submit-button {
+  min-width: 130px;
+  height: 40px;
   color: #fff;
   padding: 5px 10px;
   font-weight: bold;
@@ -187,13 +206,12 @@
   outline: none;
   border-radius: 5px;
   border: none;
-  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5), 7px 7px 20px 0px rgba(0, 0, 0, 0.1),
-    4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5);
   background: #1f3159;
 }
-.account-info-edit-button:hover {
+.account-info-submit-button:hover {
   background-color: #2d4780;
 }
-.account-info-edit-button:active {
+.account-info-submit-button:active {
   top: 2px;
 }
