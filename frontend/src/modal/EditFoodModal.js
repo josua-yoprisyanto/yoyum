@@ -30,9 +30,8 @@ const EditFoodModal = ({ openModal, setIsModalOpen }) => {
               foodImage="https://awsimages.detik.net.id/community/media/visual/2019/04/24/de2758a6-ea38-4ae9-8c4b-f2b395a81a22_43.png?w=700&q=90"
             />
           </div>
+          <h2 className="edit-food-modal-title"> Edit Food</h2>
           <form className="edit-food-modal">
-            <h2 className="edit-food-modal-title"> Edit Food</h2>
-
             <table className="edit-food-modal-input">
               <tr>
                 <td>
