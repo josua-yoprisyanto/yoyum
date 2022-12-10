@@ -5,11 +5,8 @@ import { Op } from 'sequelize'
 class menuController{
     async readSellers(req: Request, res: Response, next: NextFunction){
         try{
-            const sellers = await db.Seller.findAll({
-                attributes: {
-                    exclude: ['password']
-                }
-            })
+            console.log("hi")
+            const sellers = await db.Seller.findAll()
             res.json({
                 success: true,
                 data: sellers
