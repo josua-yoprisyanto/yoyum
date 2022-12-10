@@ -39,8 +39,10 @@ class AuthController{
 
     async me(req: Request, res: Response, next: NextFunction){        
         try{
-            if(res.locals.err) return res.json({message: res.locals.err})            
-            res.json({admin: res.locals.user}) 
+            if(res.locals.err) return res.json({message: res.locals.err})   
+            const user = res.locals.user
+            user.token = jwt.sign(JSON.stringify(user), process.env.ACCESS_TOKEN)
+            res.json({admin: user}) 
         }catch(e: any){
             res.json({message: e.message})
         }
