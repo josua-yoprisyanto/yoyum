@@ -19,7 +19,9 @@ module.exports = {
     */   
     await queryInterface.bulkInsert('admins', [{
       email: "admin@admin.com",
-      password: bcrypt.hashSync(process.env.ADMIN_PASS, bcrypt.genSaltSync(10))
+      password: bcrypt.hashSync(process.env.ADMIN_PASS, bcrypt.genSaltSync(10)),
+      created_at: new Date(),
+      updated_at: new Date()
     }]) 
     // bcrypt.hash(process.env.ADMIN_PASS, 10, async (err: any, hash: any) => {
     //   try{
