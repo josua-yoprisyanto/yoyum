@@ -1,7 +1,6 @@
 require('dotenv').config()
 import express from 'express'
 import router from './routes'
-import { admins } from './seeders/admins'
 import db from './models'
 const bcrypt = require('bcrypt')
 
@@ -9,19 +8,19 @@ const bcrypt = require('bcrypt')
 
 
 
-try{
-    const createAdmins = () => {        
-        admins.map(admin => {
-            bcrypt.hash(admin.password, 10, (err: any, hash: any) => {
-                admin.password = hash
-                db.Admin.create(admin).then(() => {console.log("It works")}).catch((e:any) => {console.error(e)})
-            })            
-        })
-    }
-    createAdmins()
-}catch(e){
-    console.log("it broke")
-}    
+// try{
+//     const createAdmins = () => {        
+//         admins.map(admin => {
+//             bcrypt.hash(admin.password, 10, (err: any, hash: any) => {
+//                 admin.password = hash
+//                 db.Admin.create(admin).then(() => {console.log("It works")}).catch((e:any) => {console.error(e)})
+//             })            
+//         })
+//     }
+//     createAdmins()
+// }catch(e){
+//     console.log("it broke")
+// }    
 
 //I HAVE NO IDEA WHY IT WORKS I HAVE BEEN DOING THIS FOR THE PAST 10 HOURS AND IT JUST DECIDED TO FUCKING WORK AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 
