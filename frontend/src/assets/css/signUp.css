@@ -5,7 +5,7 @@
 .sign-up-input-container > div {
   transition: all ease 0.5s;
 }
-.sign-up-input-container > div:has(#next-checkbox:checked) {
+.sign-up-input-container > div:has(.next-checkbox:checked) {
   translate: -50%;
 }
 .sign-up-input-container .sign-up-input-wrapper {
@@ -29,22 +29,6 @@
   transition: all ease 0.5s;
   margin-bottom: 1rem;
 }
-.next-button {
-  height: 3rem;
-  width: 100%;
-  background-color: #1f3159;
-  margin-top: 1rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.next-button span {
-  color: white;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
 .back-button {
   height: 2.5rem;
   width: 3rem;
@@ -52,6 +36,39 @@
   line-height: 2.5rem;
   padding-inline: 1rem;
 }
-#next-checkbox {
+.next-checkbox {
   display: none;
+}
+.sign-up-password-alert {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #25252520;
+}
+.sign-up-password-alert > span {
+  font-size: 12px;
+}
+.red-alert {
+  background-color: #94001920;
+}
+.yellow-alert {
+  background-color: #ec990020;
+}
+.green-alert {
+  background-color: #00800020;
+}
+.red-alert > span,
+.red-alert > svg > path {
+  color: #940019;
+}
+.yellow-alert > span,
+.yellow-alert > svg > path {
+  color: #ec9900;
+}
+.green-alert > span,
+.green-alert > svg > path {
+  color: green;
 }

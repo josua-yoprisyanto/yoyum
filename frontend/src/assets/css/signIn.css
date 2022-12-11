@@ -10,6 +10,7 @@
   width: 100%;
   display: grid;
   place-items: center;
+  overflow: scroll;
 }
 .sign-in-wrapper {
   display: flex;
@@ -40,6 +41,10 @@
   align-items: center;
   gap: 0.5rem;
 }
+.stay-sign-in label,
+.stay-sign-in input {
+  cursor: pointer;
+}
 
 .email-input,
 .password-input {
@@ -60,11 +65,12 @@
   width: 100%;
   font-weight: bold;
   background-color: #1f3159;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   color: white;
   font-size: 1rem;
   outline: none;
   border: none;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5);
 }
 .background-image {
   height: 100vh;
