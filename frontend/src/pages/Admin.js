@@ -21,13 +21,17 @@ const Admin = () => {
             <FontAwesomeIcon icon={faUser} size="lg" />
           </div>
           <span className="triangle"></span>
+          <div className="profil-drop-down-menu">
+            <div className="log-out-button">
+              <span>LOG OUT </span>
+            </div>
+          </div>
         </div>
       </div>
       <div className="admin-content">
         <StanCard /> <StanCard /> <StanCard /> <StanCard /> <StanCard /> <StanCard />
-        <StanCard /> <StanCard />
-        <StanCard /> <StanCard />
-        <StanCard /> <StanCard />
+        <StanCard />
+        <div className="add-stan-button"></div>
       </div>
     </div>
   );

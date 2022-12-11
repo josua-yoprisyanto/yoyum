@@ -1,16 +1,16 @@
 .seller-profil-content {
   width: 100%;
-  padding-top: 5rem;
   padding-inline: 1.5rem;
   display: grid;
   justify-content: center;
-  align-items: center;
   gap: 1rem;
   grid-template-columns: 300px 600px;
   grid-template-rows: 100px auto;
   grid-template-areas:
     "stan account"
     "menu account";
+  margin-top: 4rem;
+  overflow: auto;
 }
 .profil-stan-container,
 .profil-account,
@@ -128,19 +128,101 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+.change-image > input {
+  display: none;
 }
 .change-image > svg > path {
   color: white;
 }
-.profil-account > table {
+.account-info {
+  width: 100%;
+  max-width: 450px;
+}
+.account-info > table {
   width: 100%;
 }
-.profil-account > table > tr > td {
-  font-size: 1rem;
-  padding-left: 1;
-  padding-inline: 0.5rem;
+.account-info > table > tr {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
 }
-.profil-account > table > tr > td:nth-child(1) {
+.account-info > table > tr > td {
+  font-size: 1rem;
+}
+.account-info > table > tr > td:nth-child(1) {
   color: #1f3159;
   font-weight: bold;
+  width: 45%;
+}
+.account-info > table > tr > td:nth-child(3) {
+  width: 45%;
+}
+.account-info > table > tr > td:nth-child(3) > input {
+  width: 100%;
+  border: 1px solid #888;
+  padding-inline: 0.5rem;
+}
+.account-info > table > tr > td:nth-child(3) > input:focus {
+  width: 100%;
+  outline: 1px solid #1f3159;
+}
+.account-info > table > tr > td:nth-child(3) > input:disabled {
+  background-color: transparent;
+  border: 1px solid white;
+  outline: none;
+}
+.account-info-button {
+  display: flex;
+  justify-content: right;
+  margin-top: 1rem;
+}
+.account-info-edit-button {
+  min-width: 130px;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.account-info-edit-button > span {
+  color: #1f3159;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+.account-info-edit-button > svg > path {
+  color: #1f3159;
+}
+.account-info-submit-button {
+  background-color: #1f3159;
+}
+.account-info-cancel-button {
+  background-color: #666;
+  margin-right: 1rem;
+}
+.account-info-submit-button,
+.account-info-cancel-button {
+  min-width: 130px;
+  height: 40px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5);
+}
+.account-info-submit-button:hover {
+  background-color: #2d4780;
+}
+.account-info-cancel-button:hover {
+  background-color: #888;
+}
+.account-info-submit-button:active,
+.account-info-cancel-button:active {
+  top: 2px;
 }
