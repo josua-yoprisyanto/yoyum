@@ -1,9 +1,32 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../assets/css/sellerProfilContent.css";
 import { stanObject } from "../data/stanObject.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBowlFood, faCamera, faCookie, faMugHot, faUtensils } from "@fortawesome/free-solid-svg-icons";
+import { faBowlFood, faCamera, faCookie, faMugHot, faPen, faUtensils } from "@fortawesome/free-solid-svg-icons";
 const SellerProfilContent = () => {
+  const [isEdit, setIsEdit] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState("2312312");
+  const [stanName, setStanName] = useState("kantin davin");
+  const [history, setHistory] = useState({});
+  const stanNameRef = useRef();
+  const editFormHandle = (e) => {
+    e.preventDefault();
+    setIsEdit(true);
+    setHistory({ phoneNumber: phoneNumber, stanName: stanName });
+  };
+  const cancelFormHandle = (e) => {
+    e.preventDefault();
+    setIsEdit(false);
+    setStanName(history.stanName);
+    setPhoneNumber(history.phoneNumber);
+  };
+  const submitFormHandle = (e) => {
+    e.preventDefault();
+    setIsEdit(false);
+  };
+  useEffect(() => {
+    stanNameRef.current.focus();
+  }, [isEdit]);
   return (
     <div className="seller-profil-content">
       <div className="profil-stan-container">
@@ -36,23 +59,57 @@ const SellerProfilContent = () => {
         <h2>ACCOUNT</h2>
         <div className="stan-image">
           <img src={stanObject[1].image} alt="stan" />
-          <span className="change-image">
+          <label className="change-image">
             <FontAwesomeIcon icon={faCamera} size="xl" />
-          </span>
+            <input type="file" name="myImage" accept="image/png,  image/jpeg" />
+          </label>
         </div>
-
-        <table>
-          <tr>
-            <td>Stan Name</td>
-            <td>:</td>
-            <td>stan 2</td>
-          </tr>
-          <tr>
-            <td>Phone Number</td>
-            <td>:</td>
-            <td>+62 812 2323 5435</td>
-          </tr>
-        </table>
+        <form className="account-info" onSubmit={(e) => submitFormHandle(e)}>
+          <table>
+            <tr>
+              <td>Stan Name</td>
+              <td>:</td>
+              <td>
+                <input
+                  type="text"
+                  value={stanName}
+                  onChange={(e) => setStanName(e.target.value)}
+                  disabled={!isEdit}
+                  ref={stanNameRef}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Phone Number</td>
+              <td>:</td>
+              <td>
+                <input
+                  type="text"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  disabled={!isEdit}
+                />
+              </td>
+            </tr>
+          </table>
+          <div className="account-info-button">
+            {isEdit ? (
+              <>
+                <button onClick={(e) => cancelFormHandle(e)} className="account-info-cancel-button">
+                  cancel
+                </button>
+                <input type="submit" className="account-info-submit-button" value="submit" />
+              </>
+            ) : (
+              <>
+                <button onClick={(e) => editFormHandle(e)} className="account-info-edit-button">
+                  <span>edit</span>
+                  <FontAwesomeIcon icon={faPen} size="sm" />
+                </button>
+              </>
+            )}
+          </div>
+        </form>
       </div>
     </div>
   );

@@ -3,6 +3,9 @@ import "../assets/css/seller.css";
 import "../assets/css/customer.css";
 import SellerSideBar from "../components/SellerSideBar";
 import SellerProfilContent from "../components/SellerProfilContent";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import yoyum1 from "../assets/images/yoyum1.png";
 const Customer = () => {
   return (
     <div className="customer">
@@ -10,9 +13,24 @@ const Customer = () => {
         <SellerSideBar />
       </div>
       <div className="navigationBar">
-        <div className="seller-title">
+        <div className="seller-navbar">
+          <div className="seller-yoyum-logo">
+            <img src={yoyum1} alt="yoyum logo"></img>
+          </div>
           <h1>SELLER</h1>
+          <div className="profil-drop-down">
+            <div className="profil-icon">
+              <FontAwesomeIcon icon={faUser} size="lg" />
+            </div>
+            <span className="triangle"></span>
+            <div className="profil-drop-down-menu">
+              <div className="log-out-button">
+                <span>LOG OUT </span>
+              </div>
+            </div>
+          </div>
         </div>
+
         <SellerProfilContent />
       </div>
     </div>

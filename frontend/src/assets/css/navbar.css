@@ -1,8 +1,6 @@
 .nav-container {
-  background-color: #d9d9d9;
   height: 4rem;
   padding-inline: 2%;
-  box-shadow: 0 4px 4px #d9d9d9;
   display: flex;
   justify-content: space-between;
   position: fixed;
@@ -10,6 +8,7 @@
   left: 250px;
   right: 0;
   z-index: 999;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 .yoyum-logo-1 {
   width: 3rem;
@@ -41,6 +40,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  text-shadow: 1px 1px 1 px white;
 }
 .action a:hover {
   color: #666;
