@@ -22,7 +22,8 @@ class AuthController{
                     const token = jwt.sign(JSON.stringify(user), process.env.ACCESS_TOKEN)
                     res.json({
                         status: "Success",
-                        token: token
+                        token: token,
+                        role: 'ADMIN'
                     })        
                 }else{                    
                     res.json({
