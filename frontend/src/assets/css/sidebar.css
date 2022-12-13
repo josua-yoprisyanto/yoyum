@@ -54,6 +54,7 @@
 }
 .stan > svg {
   width: 2.3rem;
+  font-size: 1.5rem;
 }
 .stan > svg > path {
   color: #1f3159;
