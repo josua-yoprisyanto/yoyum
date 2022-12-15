@@ -2,7 +2,6 @@
   height: 4rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   position: fixed;
   top: 0;
   left: 250px;
@@ -15,10 +14,12 @@
   color: #1f3159;
   font-size: 1.5rem;
   font-weight: bold;
+  align-self: center;
 }
 .seller-yoyum-logo {
   width: 0px;
   visibility: hidden;
+  align-self: center;
 }
 .seller-yoyum-logo img {
   width: 2.3rem;
