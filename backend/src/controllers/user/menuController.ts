@@ -6,7 +6,11 @@ class menuController{
     async readSellers(req: Request, res: Response, next: NextFunction){
         try{
             console.log("hi")
-            const sellers = await db.Seller.findAll()
+            const sellers = await db.Seller.findAll({
+                where:{
+                    active: true
+                }
+            })
             res.json({
                 success: true,
                 data: sellers

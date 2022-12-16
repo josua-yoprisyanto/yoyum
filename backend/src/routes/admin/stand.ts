@@ -5,6 +5,7 @@ const router = Router()
 
 router.get('/', StandController.read)
 router.get('/:id', StandController.readOne)
+router.delete('/:id', StandController.deleteStand)
 router.post('/create', StandController.addStand)
 router.put('/active/:id', StandController.updateActive)
 

@@ -79,7 +79,7 @@ class StandController{
             if(!req.params.id) return res.json({message: "At least tell me which stand you want to cahnge the status man"})                        
             if(!req.body) return res.json({message: "FOR FUCKS SAKE JUST GIVE ME A TRUE OR FALSE"})
             const stand = await db.Seller.findOne({where: {id: req.params.id}})
-            stand.set({active: req.body.status})
+            stand.set({active: req.body.active})
             await stand.save()
             res.json({
                 status: "Success",
@@ -87,6 +87,26 @@ class StandController{
             })
         }catch(e: any){
             res.json({message: e.message})
+        }
+    }
+
+    async deleteStand(req: Request, res: Response, next: NextFunction){
+        try{
+            if(res.locals.err) return res.json({message: 'OI JUST GIVE ME TOKEN LAH' })
+            const { id } = req.params
+
+            await db.Seller.destroy({
+                where:{
+                    id: id
+                }
+            })
+
+            res.json({
+                success: true,
+                message: "Stand successfully deleted"
+            })
+        }catch(err){
+
         }
     }
 
