@@ -8,6 +8,8 @@ interface sellerAttributes{
   email: string,
   password: string,
   active: boolean,
+  img: string
+
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -23,6 +25,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
     email!: string
     password!: string
     active!: boolean
+    img!: string
+
 
 
     static associate(models: any) {
@@ -57,6 +61,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     },
+    img:{
+      allowNull: true,
+      type: DataTypes.STRING      
+    }
   }, {
     sequelize,
     modelName: 'Seller',
