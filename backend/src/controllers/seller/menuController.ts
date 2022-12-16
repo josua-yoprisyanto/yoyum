@@ -34,6 +34,26 @@ class menuController{
     //     }
     // }
 
+    async read(req: Request, res: Response, next: NextFunction){
+        try{
+            const data = await db.MenuItem.findAll({
+                where:{
+                    seller_id: res.locals.user.id,
+                }
+            })
+
+            res.json({
+                success: true,
+                data: data
+            })
+        }catch(err){
+            res.json({
+                status: "failed",
+                message: err
+            })
+        }
+    }
+
     async createMenuItem(req: Request, res: Response, next: NextFunction){
         try{
             const{
@@ -58,6 +78,86 @@ class menuController{
             res.json({
                 status: "failed",
                 message: e.message
+            })
+        }
+    }
+
+    async menuItemReadOne(req: Request, res: Response, next: NextFunction){
+        try{
+            const { id } = req.params
+            if(res.locals.err) return res.json({message: "HOW MANY TIMES DO I HAVE TO ASK FOR A DAMN KEY"})            
+
+            const data = await db.MenuItem.finOne({
+                where:{
+                    id: id
+                }
+            })
+
+            res.json({
+                success: true,
+                data: data
+            })
+        }catch(err){
+            res.json({
+                status: "failed",
+                message: err
+            })
+        }
+    }
+
+    async editMenuItem(req: Request, res: Response, next: NextFunction){
+        try{
+            const { id } = req.params
+            if(res.locals.err) return res.json({message: "HOW MANY TIMES DO I HAVE TO ASK FOR A DAMN KEY"})            
+            const{
+                name,
+                img,
+                price,
+                type
+            }: MenuItemInput = menuItemSchema.validateSync(req.body)
+
+            const menuItem = await db.MenuItem.findOne({
+                where:{
+                    id: id
+                }
+            })
+
+            menuItem.name = name
+            menuItem.img = img
+            menuItem.price = price
+            menuItem.type = type
+
+            await menuItem.save()
+
+            res.json({
+                success: true,
+                message: "item successfully updated"
+            })
+        }catch(err: any){
+            res.json({
+                status: "failed",
+                message: err.message
+            })
+        }        
+    }
+    async deleteMenuItem(req: Request, res: Response, next: NextFunction){
+        try{
+            const { id } = req.params
+
+            await db.MenuItem.destroy({
+                where:{
+                    id: id
+                }
+            })
+
+            res.json({
+                success: true,
+                message: "Item succesfully deleted"
+            })
+        }catch(err){
+            res.json({
+                status: "failed",
+                message: err
             })
         }
     }
