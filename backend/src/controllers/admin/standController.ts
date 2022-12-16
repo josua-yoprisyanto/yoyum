@@ -1,7 +1,10 @@
 import { Request, Response, NextFunction } from "express";
-import { emit } from "process";
+import { sellerSchema } from "../../validators/admin/seller";
+import { Asserts } from "yup";
 import db from "../../models";
 const bcrypt = require('bcrypt')
+
+interface SellerInput extends Asserts<typeof sellerSchema>{}
 
 
 class StandController{
@@ -40,21 +43,30 @@ class StandController{
 
     async addStand(req: Request, res: Response, next: NextFunction){
         try{
-            if(res.locals.err) return res.json({message: "Give token pls"})
-            let user = req.body
-            bcrypt.hash(user.password, 10, (err: any, hash: any) => {
-                user.password = hash
-                db.Seller.create(user).then(() => {
-                    res.json({
-                        status: "Success",
-                        data: user
-                    })
-                })   .catch((e: any) => {
-                    res.json({
-                        status: "Failed",
-                        data: e.message
-                    })
-                })             
+            const {
+                name,
+                email,
+                number,
+                password,
+                active,
+                img
+            }: SellerInput = sellerSchema.validateSync(req.body)
+            if(res.locals.err) return res.json({message: "Give token pls"})            
+            bcrypt.hash(password, 10, async (err: any, hash: any) => {
+                if(err) throw new Error(err)
+                await db.Seller.create({
+                    name: name,
+                    email: email,
+                    number: number,
+                    password: hash,
+                    active: active,
+                    img: img
+                })
+            })
+
+            res.json({
+                success: true,
+                message: "Seller succesfully created"
             })
         }catch(e: any){
             res.json({message: e.message})

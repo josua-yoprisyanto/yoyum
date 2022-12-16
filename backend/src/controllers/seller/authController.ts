@@ -39,7 +39,6 @@ class authController{
 
     async me(req:Request, res:Response, next:NextFunction){
         try{
-            console.log("Hit")
             if (res.locals.err) return res.json({message: "It's almost midnight, I am running out of ideas for the no key thing"})
             const data = await db.Seller.findAll({
                 where: {id: res.locals.user.id},
@@ -54,7 +53,8 @@ class authController{
             if(!data) return res.json({message: 'something went horribly wrong'})
             res.json({
                 status: "Success",
-                data: data
+                data: data,
+                role: 'SELLER'
             })
         }catch(e: any){
             res.json({

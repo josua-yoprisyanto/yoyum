@@ -38,12 +38,16 @@ class AuthController{
         }
     }
 
-    async me(req: Request, res: Response, next: NextFunction){        
+    async me(_: Request, res: Response, __: NextFunction){        
         try{
             if(res.locals.err) return res.json({message: res.locals.err})   
             const user = res.locals.user
             user.token = jwt.sign(JSON.stringify(user), process.env.ACCESS_TOKEN)
-            res.json({admin: user}) 
+            res.json({
+                success: true,
+                admin: user,
+                role: 'ADMIN'
+            }) 
         }catch(e: any){
             res.json({message: e.message})
         }
