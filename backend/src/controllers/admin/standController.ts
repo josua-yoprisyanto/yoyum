@@ -73,8 +73,7 @@ class StandController{
                 active,                
             }: SellerInput = sellerSchema.validateSync(req.body)
 
-            const { img }: ImgInput = imgSchema.validateSync(req.files)
-            console.log(img[0])
+            const { img }: ImgInput = imgSchema.validateSync(req.files)            
             if(res.locals.err) return res.json({message: "Give token pls"})            
             bcrypt.hash(password, 10, async (err: any, hash: any) => {
                 if(err) throw new Error(err)

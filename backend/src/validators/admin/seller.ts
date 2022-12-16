@@ -9,5 +9,5 @@ export const sellerSchema = yup.object().shape({
 })
 
 export const imgSchema = yup.object().shape({
-    img: yup.array().required()
+    img: yup.array().nullable().default(null)
 })
