@@ -5,6 +5,9 @@ export const sellerSchema = yup.object().shape({
     email: yup.string().required(),
     number: yup.string().required(),
     password: yup.string().required(),
-    active: yup.boolean().default(true),
-    img: yup.string().nullable().default(null)
+    active: yup.boolean().default(true)
+})
+
+export const imgSchema = yup.object().shape({
+    img: yup.array().required()
 })

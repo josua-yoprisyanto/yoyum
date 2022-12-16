@@ -2,8 +2,11 @@ import { Request, Response, NextFunction } from "express";
 import db from "../../models";
 import { menuItemSchema } from '../../validators/seller/menuItem'
 import { Asserts } from 'yup'
+import { imgSchema } from "../../validators/admin/seller";
+import { getImageUrl } from "../../middlewares/getImageUrl";
 
 interface MenuItemInput extends Asserts<typeof menuItemSchema>{}
+interface ImgInput extends Asserts<typeof imgSchema>{}
 
 class menuController{
     // async read(req: Request, res: Response, next: NextFunction){
@@ -57,16 +60,16 @@ class menuController{
     async createMenuItem(req: Request, res: Response, next: NextFunction){
         try{
             const{
-                name,
-                img,
+                name,                
                 price,
                 type
             }: MenuItemInput = menuItemSchema.validateSync(req.body)
             if(res.locals.err) return res.json({message: "HOW MANY TIMES DO I HAVE TO ASK FOR A DAMN KEY"})            
+            const { img }: ImgInput = imgSchema.validateSync(req.files)
             await db.MenuItem.create({
                 seller_id: res.locals.user.id,
                 name: name,
-                img: img,
+                img: img ? getImageUrl(img[0].filename) : null ,
                 price: price,
                 type: type
             })
@@ -87,7 +90,7 @@ class menuController{
             const { id } = req.params
             if(res.locals.err) return res.json({message: "HOW MANY TIMES DO I HAVE TO ASK FOR A DAMN KEY"})            
 
-            const data = await db.MenuItem.finOne({
+            const data = await db.MenuItem.findOne({
                 where:{
                     id: id
                 }
@@ -110,11 +113,12 @@ class menuController{
             const { id } = req.params
             if(res.locals.err) return res.json({message: "HOW MANY TIMES DO I HAVE TO ASK FOR A DAMN KEY"})            
             const{
-                name,
-                img,
+                name,                
                 price,
                 type
             }: MenuItemInput = menuItemSchema.validateSync(req.body)
+
+            const { img }: ImgInput = imgSchema.validateSync(req.files)
 
             const menuItem = await db.MenuItem.findOne({
                 where:{
@@ -123,7 +127,7 @@ class menuController{
             })
 
             menuItem.name = name
-            menuItem.img = img
+            menuItem.img = img ? getImageUrl(img[0].filemame) : null
             menuItem.price = price
             menuItem.type = type
 

@@ -1,10 +1,12 @@
 import { Request, Response, NextFunction } from "express";
-import { sellerSchema } from "../../validators/admin/seller";
+import { sellerSchema, imgSchema } from "../../validators/admin/seller";
 import { Asserts } from "yup";
+import { getImageUrl } from "../../middlewares/getImageUrl";
 import db from "../../models";
 const bcrypt = require('bcrypt')
 
 interface SellerInput extends Asserts<typeof sellerSchema>{}
+interface ImgInput extends Asserts<typeof imgSchema>{}
 
 
 class StandController{
@@ -62,15 +64,17 @@ class StandController{
 
 
     async addStand(req: Request, res: Response, next: NextFunction){
-        try{
+        try{            
             const {
                 name,
                 email,
                 number,
                 password,
-                active,
-                img
+                active,                
             }: SellerInput = sellerSchema.validateSync(req.body)
+
+            const { img }: ImgInput = imgSchema.validateSync(req.files)
+            console.log(img[0])
             if(res.locals.err) return res.json({message: "Give token pls"})            
             bcrypt.hash(password, 10, async (err: any, hash: any) => {
                 if(err) throw new Error(err)
@@ -80,7 +84,7 @@ class StandController{
                     number: number,
                     password: hash,
                     active: active,
-                    img: img
+                    img: img ? getImageUrl(img[0].filename) : null
                 })
             })
 

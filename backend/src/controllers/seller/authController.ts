@@ -3,12 +3,15 @@ import db from "../../models";
 import dotenv from 'dotenv'
 import { sellerEditSchema } from "../../validators/seller/seller";
 import { Asserts } from "yup";
+import { imgSchema } from "../../validators/admin/seller";
+import { getImageUrl } from "../../middlewares/getImageUrl";
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 dotenv.config()
 
 interface SellerInput extends Asserts<typeof sellerEditSchema>{}
+interface ImgInput extends Asserts<typeof imgSchema>{}
 class authController{
     async login(req: Request, res: Response, next: NextFunction){
         try{
@@ -71,10 +74,10 @@ class authController{
         try{
             const {
                 name,
-                number,
-                email,
-                img
+                number
             }: SellerInput = sellerEditSchema.validateSync(req.body)
+            const { img }: ImgInput = imgSchema.validateSync(req.files)
+            
             if(res.locals.err) return res.json({message: "Give token pls"})  
 
             const seller = await db.Seller.findOne({
@@ -82,12 +85,11 @@ class authController{
                     id: res.locals.user.id
                 }
             })
-            console.log(name)
+            
 
-            seller.name = name
-            seller.email = email
+            seller.name = name            
             seller.number = number
-            seller.img = img
+            seller.img = img ? getImageUrl(img[0].filename) : null
 
             await seller.save()
 
