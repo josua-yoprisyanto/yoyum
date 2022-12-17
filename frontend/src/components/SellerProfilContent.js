@@ -2,11 +2,18 @@ import React, { useEffect, useRef, useState } from "react";
 import "../assets/css/sellerProfilContent.css";
 import { stanObject } from "../data/stanObject.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBowlFood, faCamera, faCookie, faMugHot, faPen, faUtensils } from "@fortawesome/free-solid-svg-icons";
-const SellerProfilContent = () => {
+import {
+  faBowlFood,
+  faCamera,
+  faCookie,
+  faMugHot,
+  faPen,
+  faUtensils,
+} from "@fortawesome/free-solid-svg-icons";
+const SellerProfilContent = ({ stand }) => {
   const [isEdit, setIsEdit] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState("2312312");
-  const [stanName, setStanName] = useState("kantin davin");
+  const [phoneNumber, setPhoneNumber] = useState(stand?.number);
+  const [stanName, setStanName] = useState(stand?.name);
   const [history, setHistory] = useState({});
   const stanNameRef = useRef();
   const editFormHandle = (e) => {
@@ -33,7 +40,7 @@ const SellerProfilContent = () => {
         <div className="profil-stan-container">
           <div className="active stan-seller-profil">
             <img src={stanObject[1].image} alt="stan" />
-            <span>{stanObject[1].name}</span>
+            <span>{stand?.name}</span>
           </div>
         </div>
         <div className="profil-menu-info">
@@ -44,25 +51,29 @@ const SellerProfilContent = () => {
           </div>
           <div className="foods-total">
             <FontAwesomeIcon icon={faBowlFood} size="xl" />
-            <h4>23</h4>
+            <h4>{stand?.food_items}</h4>
           </div>
           <div className="drinks-total">
             <FontAwesomeIcon icon={faMugHot} size="xl" />
-            <h4>12</h4>
+            <h4>{stand?.drink_items}</h4>
           </div>
           <div className="others-total">
             <FontAwesomeIcon icon={faCookie} size="xl" />
-            <h4>99</h4>
+            <h4>{stand?.other_items}</h4>
           </div>
         </div>
-
+        {console.log(stand)}
         <div className="profil-account">
           <h2>ACCOUNT</h2>
           <div className="stan-image">
             <img src={stanObject[1].image} alt="stan" />
             <label className="change-image">
               <FontAwesomeIcon icon={faCamera} size="xl" />
-              <input type="file" name="myImage" accept="image/png,  image/jpeg" />
+              <input
+                type="file"
+                name="myImage"
+                accept="image/png,  image/jpeg"
+              />
             </label>
           </div>
           <form className="account-info" onSubmit={(e) => submitFormHandle(e)}>
@@ -96,14 +107,24 @@ const SellerProfilContent = () => {
             <div className="account-info-button">
               {isEdit ? (
                 <>
-                  <button onClick={(e) => cancelFormHandle(e)} className="account-info-cancel-button">
+                  <button
+                    onClick={(e) => cancelFormHandle(e)}
+                    className="account-info-cancel-button"
+                  >
                     cancel
                   </button>
-                  <input type="submit" className="account-info-submit-button" value="submit" />
+                  <input
+                    type="submit"
+                    className="account-info-submit-button"
+                    value="submit"
+                  />
                 </>
               ) : (
                 <>
-                  <button onClick={(e) => editFormHandle(e)} className="account-info-edit-button">
+                  <button
+                    onClick={(e) => editFormHandle(e)}
+                    className="account-info-edit-button"
+                  >
                     <span>edit</span>
                     <FontAwesomeIcon icon={faPen} size="sm" />
                   </button>

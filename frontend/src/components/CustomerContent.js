@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import FoodCard from "./FoodCard";
 import "../assets/css/menuContent.css";
 
-function CustomerContent({ setScrollCondition }) {
+function CustomerContent({ setScrollCondition, menus }) {
   const foods = useRef();
   const drinks = useRef();
   const others = useRef();
@@ -33,26 +33,15 @@ function CustomerContent({ setScrollCondition }) {
           <span className="short-line" />
         </div>
         <div className="content-food-container">
-          <FoodCard
-            foodName="nasi kari"
-            foodPrice={99000}
-            foodImage="https://awsimages.detik.net.id/community/media/visual/2019/04/24/de2758a6-ea38-4ae9-8c4b-f2b395a81a22_43.png?w=700&q=90"
-          />
-          <FoodCard
-            foodName="nasi kari"
-            foodPrice={99000}
-            foodImage="https://awsimages.detik.net.id/community/media/visual/2019/04/24/de2758a6-ea38-4ae9-8c4b-f2b395a81a22_43.png?w=700&q=90"
-          />
-          <FoodCard
-            foodName="nasi kari"
-            foodPrice={99000}
-            foodImage="https://awsimages.detik.net.id/community/media/visual/2019/04/24/de2758a6-ea38-4ae9-8c4b-f2b395a81a22_43.png?w=700&q=90"
-          />
-          <FoodCard
-            foodName="nasi kari"
-            foodPrice={99000}
-            foodImage="https://awsimages.detik.net.id/community/media/visual/2019/04/24/de2758a6-ea38-4ae9-8c4b-f2b395a81a22_43.png?w=700&q=90"
-          />
+          {menus
+            ?.filter((menu) => menu.type === "food")
+            .map((menu) => (
+              <FoodCard
+                foodName={menu.name}
+                foodPrice={menu.price}
+                foodImage="https://awsimages.detik.net.id/community/media/visual/2019/04/24/de2758a6-ea38-4ae9-8c4b-f2b395a81a22_43.png?w=700&q=90"
+              />
+            ))}
         </div>
       </div>
 
@@ -65,11 +54,15 @@ function CustomerContent({ setScrollCondition }) {
           <span className="short-line" />
         </div>
         <div className="content-food-container">
-          <FoodCard
-            foodName="nasi kari"
-            foodPrice={99000}
-            foodImage="https://awsimages.detik.net.id/community/media/visual/2019/04/24/de2758a6-ea38-4ae9-8c4b-f2b395a81a22_43.png?w=700&q=90"
-          />
+          {menus
+            ?.filter((menu) => menu.type === "drink")
+            .map((menu) => (
+              <FoodCard
+                foodName={menu.name}
+                foodPrice={menu.price}
+                foodImage="https://awsimages.detik.net.id/community/media/visual/2019/04/24/de2758a6-ea38-4ae9-8c4b-f2b395a81a22_43.png?w=700&q=90"
+              />
+            ))}
         </div>
       </div>
 
@@ -82,11 +75,15 @@ function CustomerContent({ setScrollCondition }) {
           <span className="short-line" />
         </div>
         <div className="content-food-container">
-          <FoodCard
-            foodName="nasi kari"
-            foodPrice={99000}
-            foodImage="https://awsimages.detik.net.id/community/media/visual/2019/04/24/de2758a6-ea38-4ae9-8c4b-f2b395a81a22_43.png?w=700&q=90"
-          />
+          {menus
+            ?.filter((menu) => menu.type === "other")
+            .map((menu) => (
+              <FoodCard
+                foodName={menu.name}
+                foodPrice={menu.price}
+                foodImage="https://awsimages.detik.net.id/community/media/visual/2019/04/24/de2758a6-ea38-4ae9-8c4b-f2b395a81a22_43.png?w=700&q=90"
+              />
+            ))}
         </div>
       </div>
     </div>

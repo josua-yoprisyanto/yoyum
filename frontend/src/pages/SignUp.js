@@ -3,8 +3,15 @@ import CanteenUIB from "../assets/images/CanteenUIB.jpg";
 import "../assets/css/signIn.css";
 import "../assets/css/signUp.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeft,
+  faCircleExclamation,
+} from "@fortawesome/free-solid-svg-icons";
 import { checkPassword } from "../utils/checkPassword";
+import { Form } from "react-bootstrap";
+import { createStand } from "../axios";
+import { useNavigate } from "react-router-dom";
+
 const SignUp = () => {
   const checkBoxRef = useRef();
   const [email, setEmail] = useState("");
@@ -12,14 +19,22 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [stanName, setStanName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState();
+  const [image, setImage] = useState();
+
+  const navigate = useNavigate();
+
   const [alertText, setAlertText] = useState(
     "Hint: to make password stronger. use upper and lower case letters, number, and symbols."
   );
   const passwordAlertClass = () => {
-    if (alertText === "Hint: to make password stronger. use upper and lower case letters, number, and symbols.")
+    if (
+      alertText ===
+      "Hint: to make password stronger. use upper and lower case letters, number, and symbols."
+    )
       return "sign-up-password-alert";
     if (alertText === "Strong") return "sign-up-password-alert green-alert";
-    if (alertText === "Weak: Password must be at least 8 characters long") return "sign-up-password-alert red-alert";
+    if (alertText === "Weak: Password must be at least 8 characters long")
+      return "sign-up-password-alert red-alert";
     return "sign-up-password-alert yellow-alert";
   };
 
@@ -30,6 +45,21 @@ const SignUp = () => {
     if (password === confirmPassword && checkPasswordValue === "Strong") {
       checkBoxRef.current.checked = true;
     }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    let formData = new FormData();
+
+    formData.append("name", stanName);
+    formData.append("number", phoneNumber);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("img", image);
+
+    await createStand({ formData });
+    navigate("/admin/dashboard");
   };
 
   return (
@@ -68,6 +98,15 @@ const SignUp = () => {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                   />
+
+                  <Form.Label>Default file input example</Form.Label>
+                  <Form.Control
+                    type="file"
+                    className="mb-3"
+                    value={image}
+                    onChange={(e) => setImage(e.target.value)}
+                  />
+
                   <div className={passwordAlertClass(setConfirmPassword)}>
                     <FontAwesomeIcon icon={faCircleExclamation} />
                     <span>{alertText}</span>
@@ -83,6 +122,7 @@ const SignUp = () => {
                     value={stanName}
                     onChange={(e) => setStanName(e.target.value)}
                   />
+
                   <input
                     className="phone-number-input"
                     type="number"
@@ -93,9 +133,19 @@ const SignUp = () => {
                   />
                   <label className="back-button">
                     <FontAwesomeIcon icon={faArrowLeft} />
-                    <input type="checkbox" className="next-checkbox" ref={checkBoxRef} />
+                    <input
+                      type="checkbox"
+                      className="next-checkbox"
+                      ref={checkBoxRef}
+                    />
                   </label>
-                  <input className="submit-button" type="submit" value="SUBMIT" />
+                  <button
+                    className="submit-button"
+                    type="submit"
+                    onClick={handleSubmit}
+                  >
+                    Submit
+                  </button>
                 </form>
               </div>
             </div>

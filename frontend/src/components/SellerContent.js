@@ -1,13 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FoodCard from "./FoodCard";
 import "../assets/css/menuContent.css";
 import EditFoodModal from "../modal/EditFoodModal";
+import { fetchStandMenu } from "../axios";
 
 const CustomerContent = () => {
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [type, setType] = useState();
+  const [stands, setStands] = useState();
+  const [reFetch, setReFetch] = useState(false);
+
+  const handleOpenmodal = (menuType) => {
+    setIsModalOpen(true);
+    setType(menuType);
+  };
+
+  useEffect(() => {
+    const fetchStandMenus = async () => {
+      const { data } = await fetchStandMenu();
+
+      setStands(data.data);
+    };
+    fetchStandMenus();
+  }, [reFetch]);
+
   return (
     <>
-      <EditFoodModal openModal={isModalOpen} setIsModalOpen={setIsModalOpen} />
       <div className="content">
         <div>
           <div className="content-title-container">
@@ -18,11 +36,19 @@ const CustomerContent = () => {
             <span className="short-line" />
           </div>
           <div className="content-food-container">
-            <FoodCard
-              foodName="nasi kari"
-              foodPrice={99000}
-              foodImage="https://awsimages.detik.net.id/community/media/visual/2019/04/24/de2758a6-ea38-4ae9-8c4b-f2b395a81a22_43.png?w=700&q=90"
-            />
+            {stands
+              ?.filter((stand) => stand.type === "food")
+              .map((stand) => (
+                <FoodCard
+                  foodName={stand?.name}
+                  foodPrice={stand?.price}
+                  foodImage={stand?.img}
+                />
+              ))}
+            <div
+              className="add-food-button"
+              onClick={() => handleOpenmodal("food")}
+            ></div>
           </div>
         </div>
 
@@ -35,12 +61,19 @@ const CustomerContent = () => {
             <span className="short-line" />
           </div>
           <div className="content-food-container">
-            <FoodCard
-              foodName="nasi kari"
-              foodPrice={99000}
-              foodImage="https://awsimages.detik.net.id/community/media/visual/2019/04/24/de2758a6-ea38-4ae9-8c4b-f2b395a81a22_43.png?w=700&q=90"
-            />
-            <div className="add-food-button"></div>
+            {stands
+              ?.filter((stand) => stand.type === "drink")
+              .map((stand) => (
+                <FoodCard
+                  foodName={stand?.name}
+                  foodPrice={stand?.price}
+                  foodImage={stand?.img}
+                />
+              ))}
+            <div
+              className="add-food-button"
+              onClick={() => handleOpenmodal("drink")}
+            ></div>
           </div>
         </div>
 
@@ -53,14 +86,29 @@ const CustomerContent = () => {
             <span className="short-line" />
           </div>
           <div className="content-food-container">
-            <FoodCard
-              foodName="nasi kari"
-              foodPrice={99000}
-              foodImage="https://awsimages.detik.net.id/community/media/visual/2019/04/24/de2758a6-ea38-4ae9-8c4b-f2b395a81a22_43.png?w=700&q=90"
-            />
+            {stands
+              ?.filter((stand) => stand.type === "other")
+              .map((stand) => (
+                <FoodCard
+                  foodName={stand?.name}
+                  foodPrice={stand?.price}
+                  foodImage={stand?.img}
+                />
+              ))}
+            <div
+              className="add-food-button"
+              onClick={() => handleOpenmodal("other")}
+            ></div>
           </div>
         </div>
       </div>
+
+      <EditFoodModal
+        openModal={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        type={type}
+        setReFetch={setReFetch}
+      />
     </>
   );
 };

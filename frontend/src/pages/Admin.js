@@ -1,11 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import yoyum2 from "../assets/images/yoyum2.png";
 import yoyum1 from "../assets/images/yoyum1.png";
 import StanCard from "../components/StanCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import "../assets/css/admin.css";
+import { fetchStand } from "../axios";
+import { useNavigate } from "react-router-dom";
 const Admin = () => {
+  const [stands, setStands] = useState();
+  const [loading, setLoading] = useState(true);
+
+  const [reFetch, setReFetch] = useState(false);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const getStand = async () => {
+      const { data } = await fetchStand({});
+      setStands(data.data);
+    };
+    getStand();
+    setLoading(false);
+    setReFetch(false);
+  }, [reFetch]);
+
+  const logout = () => {
+    localStorage.removeItem("token", "");
+    localStorage.removeItem("role", "");
+    navigate("/admin/sign-in");
+  };
+
+  const createStand = () => {
+    navigate("/admin/create-stand");
+  };
+
   return (
     <div className="admin">
       <div className="admin-navbar">
@@ -22,16 +51,29 @@ const Admin = () => {
           </div>
           <span className="triangle"></span>
           <div className="profil-drop-down-menu">
-            <div className="log-out-button">
+            <div className="log-out-button" onClick={logout}>
               <span>LOG OUT </span>
             </div>
           </div>
         </div>
       </div>
       <div className="admin-content">
-        <StanCard /> <StanCard /> <StanCard /> <StanCard /> <StanCard /> <StanCard />
-        <StanCard />
-        <div className="add-stan-button"></div>
+        {loading ? (
+          <span>Load...</span>
+        ) : (
+          stands?.map((stand) => (
+            <StanCard
+              id={stand.id}
+              name={stand.name}
+              number={stand.number}
+              active={stand.active}
+              img={stand.img}
+              setReFetch={setReFetch}
+              reFetch={reFetch}
+            />
+          ))
+        )}
+        <div className="add-stan-button" onClick={createStand}></div>
       </div>
     </div>
   );

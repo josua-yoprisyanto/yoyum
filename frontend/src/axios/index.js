@@ -12,7 +12,62 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
-export const login = ({ email, password }) =>
-  API.post(`http://localhost:5000/api/admin/auth/login`, { email, password });
+//admin
+export const loginAdmin = ({ email, password }) =>
+  API.post(`/api/admin/auth/login`, { email, password }); //done
 
-export const getMe = () => API.get("/api/admin/auth/me");
+export const createStand = ({ formData }) =>
+  API.post("/api/admin/stand/create", formData, {
+    headers: {
+      "Content-type": "multipart/form-data",
+    },
+  });
+
+export const fetchStand = ({ reqBody }) =>
+  API.get("/api/admin/stand/", reqBody); //done
+
+export const fetchOneStand = ({ id }) => API.get(`/api/admin/stand/${id}`);
+
+export const deleteStand = ({ id }) => API.delete(`/api/admin/stand/${id}`); //done
+
+export const changeStandActiveStatus = ({ id, active }) =>
+  API.put(`/api/admin/stand/active/${id}`, {
+    active: active,
+  });
+
+//seller
+export const loginSeller = ({ email, password }) =>
+  API.post(`/api/seller/auth/login`, { email, password }); //done
+
+export const updateSeller = ({ reqBody }) =>
+  API.put("/api/seller/auth/", reqBody);
+
+export const createStandMenu = ({ formData }) =>
+  API.post(`/api/seller/menu/create`, formData, {
+    headers: {
+      "Content-type": "multipart/form-data",
+    },
+  });
+
+export const fetchStandMenu = () => API.get("/api/seller/menu/");
+
+export const updateStandMenu = ({ formData, id }) =>
+  API.put(`/api/seller/menu/${id}`, formData, {
+    headers: {
+      "Content-type": "multipart/form-data",
+    },
+  });
+
+export const deleteStandmenu = ({ id }) => API.delete(`/api/seller/menu/${id}`);
+
+export const standDetail = () => API.get("api/seller/stand/"); //done
+
+// customer
+export const getStandMenuItem = ({ id, itemName }) =>
+  API.get(`/api/user/menu/${id}`, {
+    params: {
+      ...(itemName ? { itemName: itemName } : {}),
+    },
+  }); // done
+
+export const getCustomerStand = () => API.get("/api/user/stand"); //done

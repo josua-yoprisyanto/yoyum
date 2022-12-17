@@ -5,21 +5,23 @@ import { getMe } from "./axios";
 import {
   Customer,
   NotFound,
-  SignIn,
+  AdminSignIn,
+  SellerSignIn,
   SignUp,
   Seller,
   SellerProfil,
   Admin,
 } from "./pages";
 import { getToken } from "./utils/getToken";
+import { getRole } from "./utils/getRole";
 
 function App() {
   const token = getToken();
   const navigate = useNavigate();
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
-  const [isAdmin, setIsAdmin] = useState("");
-  const [isSeller, setIsSeller] = useState("");
+
+  const role = getRole();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,8 +44,6 @@ function App() {
           }
         );
 
-        setIsSeller(sellerResponse.data.token);
-        setIsAdmin(adminResponse.data.admin.token);
         setError(false);
         setLoaded(true);
       } catch (error) {
@@ -55,26 +55,48 @@ function App() {
     fetchData();
   }, [token]);
 
-  if (error) {
-    localStorage.removeItem("token", "");
-  }
-
-  console.log(isSeller);
-  console.log(isAdmin);
-  // if (token && !error && loaded && isAdmin !== "") {
-  //   navigate("/admin", { replace: true });
+  // if (error) {
+  //   localStorage.removeItem("token", "");
   // }
+
+  // if (token && !error && loaded) {
+  //   navigate("/yoyum/admin", { replace: true });
+  // }
+
+  useEffect(() => {
+    if (role === "ADMIN") {
+      navigate("/admin/dashboard", { replace: true });
+    }
+    if (role === "SELLER") {
+      navigate("/seller/dashboard", { replace: true });
+    }
+  }, [token, loaded, role]);
 
   return (
     <div>
       <Routes>
         <Route path="/" element={<Customer />} />
+        <Route path="/:id" element={<Customer />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/seller" element={<Seller />} />
-        <Route path="/seller/profil" element={<SellerProfil />} />
-        {token && <Route path="/admin" element={<Admin />} />}
+
+        <Route path="/admin/sign-in" element={<AdminSignIn />} />
+        <Route path="/seller/sign-in" element={<SellerSignIn />} />
+
+        {/* admin */}
+        {role === "ADMIN" && (
+          <>
+            <Route path="/admin/dashboard" element={<Admin />} />
+            <Route path="/admin/create-stand" element={<SignUp />} />
+          </>
+        )}
+
+        {/* seller */}
+        {role === "SELLER" && (
+          <>
+            <Route path="/seller/dashboard" element={<Seller />} />
+            <Route path="/seller/:profil" element={<SellerProfil />} />
+          </>
+        )}
       </Routes>
     </div>
   );

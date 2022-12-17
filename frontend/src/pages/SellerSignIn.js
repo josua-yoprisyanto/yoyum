@@ -1,27 +1,31 @@
 import React, { useState } from "react";
 import CanteenUIB from "../assets/images/CanteenUIB.jpg";
 import "../assets/css/signIn.css";
-import { login } from "../axios";
+import { loginSeller } from "../axios";
 import { useNavigate } from "react-router-dom";
 
-const SignIn = () => {
+const SellerSignIn = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [error, setError] = useState(false);
 
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
-    try {
-      e.preventDefault();
-      const response = await login({
-        email: email,
-        password: password,
-      });
-      localStorage.setItem("token", response.data.token);
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-    }
+    e.preventDefault();
+
+    loginSeller({
+      email: email,
+      password: password,
+    }).then(({ data }) => {
+      if (data.status === "Success") {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("role", data.role);
+        navigate("/seller/dashboard");
+      } else {
+        setError(true);
+      }
+    });
   };
 
   return (
@@ -35,7 +39,7 @@ const SignIn = () => {
           <form className="sign-in-form" onSubmit={handleLogin}>
             <input
               className="email-input"
-              type="text"
+              type="email"
               placeholder="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -59,6 +63,9 @@ const SignIn = () => {
               Submit
             </button>
           </form>
+          {error && (
+            <span className="text-danger ">Email / Password Wrong</span>
+          )}
         </div>
       </div>
       <div className="background-image">
@@ -69,4 +76,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SellerSignIn;

@@ -6,7 +6,16 @@ import SellerContent from "../components/SellerContent";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import yoyum1 from "../assets/images/yoyum1.png";
+import { useNavigate } from "react-router-dom";
 const Customer = () => {
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("token", "");
+    localStorage.removeItem("role", "");
+    navigate("/seller/sign-in");
+  };
+
   return (
     <div className="customer">
       <div className="sidebar">
@@ -24,7 +33,7 @@ const Customer = () => {
             </div>
             <span className="triangle"></span>
             <div className="profil-drop-down-menu">
-              <div className="log-out-button">
+              <div className="log-out-button" onClick={logout}>
                 <span>LOG OUT </span>
               </div>
             </div>
