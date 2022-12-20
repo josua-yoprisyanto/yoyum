@@ -51,7 +51,7 @@ const Customer = () => {
             <Row>
               {" "}
               {stands?.map((menu) => (
-                <Col lg={3}>
+                <Col lg={3} xs={6} className="mt-2">
                   <HomeCard menu={menu} />
                 </Col>
               ))}

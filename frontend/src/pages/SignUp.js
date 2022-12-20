@@ -23,6 +23,7 @@ const SignUp = () => {
 
   const navigate = useNavigate();
 
+  console.log(image);
   const [alertText, setAlertText] = useState(
     "Hint: to make password stronger. use upper and lower case letters, number, and symbols."
   );
@@ -99,7 +100,7 @@ const SignUp = () => {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                   />
 
-                  <Form.Label>Default file input example</Form.Label>
+                  <Form.Label>Stand Image :</Form.Label>
                   <Form.Control
                     type="file"
                     className="mb-3"

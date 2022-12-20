@@ -47,7 +47,10 @@ const SellerProfilContent = ({ stand }) => {
           <h2>MENU INFO</h2>
           <div className="total-menu">
             <FontAwesomeIcon icon={faUtensils} size="xl" />
-            <h4>Total Menu : 44</h4>
+            <h4>
+              Total Menu :{" "}
+              {stand?.food_items + stand?.drink_items + stand?.other_items}
+            </h4>
           </div>
           <div className="foods-total">
             <FontAwesomeIcon icon={faBowlFood} size="xl" />

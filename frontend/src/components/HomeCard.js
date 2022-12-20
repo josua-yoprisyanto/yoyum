@@ -16,9 +16,16 @@ const HomeCard = ({ menu }) => {
     >
       <Card className="p-3">
         {menu?.img !== null ? (
-          <Card.Img variant="top" src={menu.img} />
+          <div style={{ height: "150px" }}>
+            <Card.Img variant="top" src={menu.img} height={150} />
+          </div>
         ) : (
-          <FontAwesomeIcon icon={faStore} size="5x" />
+          <div
+            style={{ height: "150px" }}
+            className="d-flex w-100 justify-content-center align-items-center"
+          >
+            <FontAwesomeIcon icon={faStore} size="5x" />
+          </div>
         )}
         <Card.Body>
           <Card.Title className="text-center">{menu.name}</Card.Title>

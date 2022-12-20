@@ -37,7 +37,9 @@ const StanCard = ({ id, name, number, active, img, setReFetch, reFetch }) => {
         ) : (
           <div className="stan-img">
             <span className="d-flex justify-content-center align-items-center h-100">
-              <FontAwesomeIcon icon={faStore} size="6x" />
+              <div>
+                <FontAwesomeIcon icon={faStore} size="6x" />
+              </div>
             </span>
           </div>
         )}

@@ -39,7 +39,7 @@ function CustomerContent({ setScrollCondition, menus }) {
               <FoodCard
                 foodName={menu.name}
                 foodPrice={menu.price}
-                foodImage="https://awsimages.detik.net.id/community/media/visual/2019/04/24/de2758a6-ea38-4ae9-8c4b-f2b395a81a22_43.png?w=700&q=90"
+                foodImage={menu.img}
               />
             ))}
         </div>
@@ -60,7 +60,7 @@ function CustomerContent({ setScrollCondition, menus }) {
               <FoodCard
                 foodName={menu.name}
                 foodPrice={menu.price}
-                foodImage="https://awsimages.detik.net.id/community/media/visual/2019/04/24/de2758a6-ea38-4ae9-8c4b-f2b395a81a22_43.png?w=700&q=90"
+                foodImage={menu.img}
               />
             ))}
         </div>
@@ -81,7 +81,7 @@ function CustomerContent({ setScrollCondition, menus }) {
               <FoodCard
                 foodName={menu.name}
                 foodPrice={menu.price}
-                foodImage="https://awsimages.detik.net.id/community/media/visual/2019/04/24/de2758a6-ea38-4ae9-8c4b-f2b395a81a22_43.png?w=700&q=90"
+                foodImage={menu.img}
               />
             ))}
         </div>

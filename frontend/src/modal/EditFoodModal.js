@@ -17,6 +17,7 @@ const EditFoodModal = ({ openModal, setIsModalOpen, type, setReFetch }) => {
     setIsModalOpen(false);
   };
 
+  console.log(foodImage);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -93,9 +94,9 @@ const EditFoodModal = ({ openModal, setIsModalOpen, type, setReFetch }) => {
                 onChange={(e) => setFoodImage(e.target.value)}
               />
             </label>
-            <button className="edit-food-modal-delete-button">
+            {/* <button className="edit-food-modal-delete-button">
               <FontAwesomeIcon icon={faTrash} />
-            </button>
+            </button> */}
 
             <button
               className="edit-food-modal-cancel-button"
