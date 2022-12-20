@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../assets/css/sellerProfilContent.css";
-import { stanObject } from "../data/stanObject.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBowlFood,
@@ -39,7 +38,10 @@ const SellerProfilContent = ({ stand }) => {
       <div className="seller-profil-content">
         <div className="profil-stan-container">
           <div className="active stan-seller-profil">
-            <img src={stanObject[1].image} alt="stan" />
+            <img
+              src="https://img.icons8.com/material-outlined/30/000000/shopping-cart--v1.png"
+              alt="stan"
+            />
             <span>{stand?.name}</span>
           </div>
         </div>
@@ -69,7 +71,10 @@ const SellerProfilContent = ({ stand }) => {
         <div className="profil-account">
           <h2>ACCOUNT</h2>
           <div className="stan-image">
-            <img src={stanObject[1].image} alt="stan" />
+            <img
+              src="https://img.icons8.com/material-outlined/30/000000/shopping-cart--v1.png"
+              alt="stan"
+            />
             <label className="change-image">
               <FontAwesomeIcon icon={faCamera} size="xl" />
               <input
